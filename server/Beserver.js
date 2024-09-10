@@ -1,5 +1,6 @@
 const http  = require('http')
-const BE = http.createServer((req,res)=>{
+const { set, get } = require('../src/basics')
+const BE = http.createServer(async(req,res)=>{
     console.log(req.headers.host,"req.url")
     let url = new URL(req.url, 'http://localhost:5000')
     let pathname = url.pathname
@@ -8,9 +9,12 @@ const BE = http.createServer((req,res)=>{
     console.log("🚀 ~ BE ~ method:", method)
 
     switch(method){
-        case "POST":
+        case "GET":
             if (pathname?.includes('')){
-
+                    
+                    res.writeHead(200, {'Content-Type':'application/json'}) 
+                    res.end(await get("name"))
+                    break
             }
         default:
             res.writeHead(200, {'Content-Type':'application/json'}) 
