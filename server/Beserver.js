@@ -10,7 +10,7 @@ const BE = http.createServer(async(req,res)=>{
 
     switch(method){
         case "GET":
-            if (pathname?.includes('')){
+            if (pathname?.includes('get')){
                     
                     res.writeHead(200, {'Content-Type':'application/json'}) 
                     res.end(await get("name"))
