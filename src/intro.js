@@ -11,5 +11,14 @@
             3. redis on flash 
         2. redis cloud (enterprise auto manage)
 
-    
+    !Redis Client:
+        Redis client an lib to talk with redis database server 
+        1. redis client will manage connection config and distorying , pooling 
+           it uses tcp sockets to connect 
+        2. redis client will use a specific protocal/language to communicate with redis 
+        3. redis client have langauge specific apis and mapping redis key-val store data to language specific data types
+
+        community recommended clients for nodejs 
+        1. ioredis
+        2. node redis
 */
