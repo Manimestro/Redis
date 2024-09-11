@@ -21,4 +21,12 @@
         community recommended clients for nodejs 
         1. ioredis
         2. node redis
+    ! Connection Pooling 
+        in a multi-threaded programing model, connections can established with multiple threads
+        to avoid multiple connections making to redis again and again 
+        we keep a group/pool of open connections to connect 
+        this is called collection pooling 
+        
+        since node js (single threaded model) it can use a single client and operations are done with async model
+
 */

@@ -1,7 +1,11 @@
 const Redis = require('ioredis')
 
+let client
 function connect(){
-    const client = new Redis(
+    if(client){
+        return client
+    }
+     client = new Redis(
         {
             host:"127.0.0.1",
             port:6379,
@@ -12,16 +16,7 @@ function connect(){
     return client
 }
 
-
-
- async function set(key, val){
-    let client = connect()
-   return  await client.set(key, val)
-   // retuns ok 
-}
-
-async function get(key) {
-    let client = connect()
+if( client ){
     client.on("ready",()=>{
         console.log("Redis connection established")
     })
@@ -33,8 +28,17 @@ async function get(key) {
     client.on("reconnecting",(o)=>{
         console.log("reconnecting", o)
     })
+}
+ async function set(key, val){
+    let client = connect()
+   return  await client.set(key, val)
+   // retuns ok 
+}
+
+async function get(key) {
+    let client = connect()
+ 
     let val =  await client.get(key)
-    client.quit()
     return val
 }
 module.exports = {set, get}
