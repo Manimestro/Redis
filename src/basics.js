@@ -35,10 +35,28 @@ if( client ){
    // retuns ok 
 }
 
+async function startCounter(key, val){
+    let client = connect()
+   return  await client.set(key, val)
+   // retuns ok 
+}
+
+async function incrbyfloat(key, val){
+    let client = connect()
+   return  await client.incrbyfloat(key, val)
+   // retuns ok 
+}
+
+async function incrby(key, val){
+    let client = connect()
+   return  await client.incrby(key, val)
+   // retuns ok 
+}
+
 async function get(key) {
     let client = connect()
  
     let val =  await client.get(key)
     return val
 }
-module.exports = {set, get}
+module.exports = {set, get, incrby, incrbyfloat}
